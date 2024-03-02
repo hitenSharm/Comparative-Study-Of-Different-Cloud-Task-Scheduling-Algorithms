@@ -24,10 +24,25 @@ public class GenerateLengthMatrix {
         System.out.println("Initializing new Length Matrix...");
         BufferedWriter lengthBufferedWriter = new BufferedWriter(new FileWriter(lengthFile));
 
+        // Generate random MIPS values for the first 5 data centers between 1000 and 2000
+        double[] mipsValues = new double[Constants.NO_OF_DATACENTERS];
+        for (int j = 0; j < 5; j++) {
+            mipsValues[j] = Math.random() * 1000 + 1000;
+        }
+
+        // Generate random MIPS values for the next 5 data centers in a pattern
+        int baseMIPS = 500;
+        for (int j = 5; j < Constants.NO_OF_DATACENTERS; j++) {
+            mipsValues[j] = baseMIPS + (j - 5) * 500; // Adjust the formula according to your desired pattern
+        }
+        
+
         for (int i = 0; i < Constants.NO_OF_TASKS; i++) {
+            double taskLength = Math.random() * 4000 + 4000; // Random task length between 2000 and 5000
             for (int j = 0; j < Constants.NO_OF_DATACENTERS; j++) {
-                lengthMatrix[i][j] = Math.random() * 700 + 30;
-                lengthBufferedWriter.write(String.format("%.2f ", lengthMatrix[i][j]));
+                double cost = taskLength / mipsValues[j];
+                lengthMatrix[i][j] = cost;
+                lengthBufferedWriter.write(String.format("%.2f ", cost));
             }
             lengthBufferedWriter.write('\n');
         }

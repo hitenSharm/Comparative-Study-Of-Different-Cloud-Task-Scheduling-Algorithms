@@ -26,6 +26,8 @@ public class PSO {
             swarm.evolve();
             if (i % 10 == 0) {
                 System.out.printf("Global best at iteration (%d): %f\n", i, swarm.getBestFitness());
+                PSO_Particle bestParticle = (PSO_Particle) swarm.getBestParticle();
+                System.out.println(bestParticle.toString());
             }
         }
 
@@ -37,6 +39,14 @@ public class PSO {
 
         return swarm.getBestPosition();
     }
+
+    // private void printTaskAssignments(double[] bestPosition) {
+    //     System.out.println("Task-to-VM Assignments:");
+    //     for (int task = 0; task < bestPosition.length; task++) {
+    //         int assignedVM = (int) bestPosition[task];
+    //         System.out.println("Task " + task + " is assigned to VM " + assignedVM);
+    //     }
+    // }
 
     private static void initParticles() {
         particles = new PSO_Particle[Constants.POPULATION_SIZE];

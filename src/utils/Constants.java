@@ -6,7 +6,7 @@ public class Constants {
     public static int NO_OF_GENERATIONS = 50;
     
     //Datacenter Parameters
-    public static int NO_OF_DATACENTERS = 5;
+    public static int NO_OF_DATACENTERS = 10;
     public static String ARCHITECTURE = "x86";
     public static String OS = "Linux";
     public static double TIME_ZONE = 5.5;
@@ -22,7 +22,7 @@ public class Constants {
     public static int HOST_MIPS = 1000;
 
     //VM Parameters
-    public static int NO_OF_VMS = 5;
+    public static int NO_OF_VMS = 10;
     public static long VM_IMAGE_SIZE = 10000;
     public static int VM_RAM = 512;
     public static int VM_MIPS = 250;
